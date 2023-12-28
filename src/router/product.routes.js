@@ -5,7 +5,11 @@ const ProdRouter = Router()
 const product = new ProductManager()
 
 ProdRouter.get("/", async (req, res) =>{
-    res.send(await product.getProducts())
+    let limit = parseInt(req.query.limit);
+    if(!limit) return res.send(await product.readProducts())
+    let allProd = await product.readProducts()
+    let productLimit = allProd.slice(0, limit)
+    res.send(productLimit)
 })
 
 ProdRouter.get("/:id", async (req, res) =>{

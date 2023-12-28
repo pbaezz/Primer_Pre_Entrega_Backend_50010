@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use("/api/products", ProdRouter)
-app.use("/api/cart", CartRouter)
+app.use("/api/carts", CartRouter)
 
 app.listen(PORT,()=>{
     console.log(`Servidor Express Puerto ${PORT}`)
